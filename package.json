@@ -1,0 +1,18 @@
+{
+  "name": "crowdfunder",
+  "version": "1.0.0",
+  "description": "Crowdfunding blockchain application for the Ethereum Network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "ganache-cli": "^6.3.0",
+    "mocha": "^5.2.0",
+    "solc": "^0.5.4",
+    "web3": "1.0.0-beta.36"
+  }
+}
