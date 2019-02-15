@@ -45,7 +45,6 @@ contract Crowdfund {
     }
     
     function createRequest(string description, uint value, address recipient) public restricted {
-        require(approvers[msg.sender]);
         Request memory newRequest = Request({
             description: description,
             value: value,
