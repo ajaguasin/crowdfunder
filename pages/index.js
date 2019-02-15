@@ -1,7 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
+import creator from "../ethereum/creator";
 
-const index = () => {
-  return <div>Home Page</div>;
-};
+class CreatorIndex extends Component {
+  async componentDidMount() {
+    const crowdfunds = await creator.methods.getDeployedCrowdfunds().call();
+    console.log(crowdfunds);
+  }
 
-export default index;
+  render() {
+    return <div>Home Page</div>;
+  }
+}
+
+export default CreatorIndex;
