@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import creator from "../ethereum/creator";
 
-import { Card } from "semantic-ui-react";
+import { Card, Button } from "semantic-ui-react";
+import Layout from "../components/Layout";
 
 class CreatorIndex extends Component {
   static async getInitialProps() {
@@ -23,13 +24,18 @@ class CreatorIndex extends Component {
 
   render() {
     return (
-      <div>
-        <link
-          rel="stylesheet"
-          href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
-        />
-        {this.renderCrowdfunds()}
-      </div>
+      <Layout>
+        <div>
+          <h3>Open Campaigns</h3>
+          <Button
+            // floated="right"
+            content="Create Crowdfund"
+            icon="add circle"
+            primary
+          />
+          {this.renderCrowdfunds()}
+        </div>
+      </Layout>
     );
   }
 }
