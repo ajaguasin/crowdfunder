@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import creator from "../ethereum/creator";
-
 import { Card, Button } from "semantic-ui-react";
 import Layout from "../components/Layout";
+import { Link } from "../routes";
 
 class CreatorIndex extends Component {
   static async getInitialProps() {
@@ -14,7 +14,11 @@ class CreatorIndex extends Component {
     const items = this.props.crowdfunds.map(address => {
       return {
         header: address,
-        description: <a>View Campaign</a>,
+        description: (
+          <Link route={`/crowdfunds/${address}`}>
+            <a>View Crowdfunds</a>
+          </Link>
+        ),
         fluid: true
       };
     });
@@ -26,13 +30,17 @@ class CreatorIndex extends Component {
     return (
       <Layout>
         <div>
-          <h3>Open Campaigns</h3>
-          <Button
-            // floated="right"
-            content="Create Crowdfund"
-            icon="add circle"
-            primary
-          />
+          <h3>Open Crowdfunds</h3>
+          <Link route="crowdfunds/new">
+            <a>
+              <Button
+                // floated="right"
+                content="Create Crowdfund"
+                icon="add circle"
+                primary
+              />
+            </a>
+          </Link>
           {this.renderCrowdfunds()}
         </div>
       </Layout>

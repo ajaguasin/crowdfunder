@@ -3,7 +3,7 @@ import CrowdfundCreator from "./build/CrowdfundCreator";
 
 const instance = new web3.eth.Contract(
   JSON.parse(CrowdfundCreator.interface),
-  "0x22f43CF79A2327c3041353DA3b40382D529eBB31"
+  "0xb5B83a7Bb76508BeA7919fB6F68a2D80f97abe7F"
 );
 
 export default instance;
