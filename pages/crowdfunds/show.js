@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Layout from "../../components/Layout";
 import Crowdfund from "../../ethereum/crowdfund";
-import { Card } from "semantic-ui-react";
+import { Card, Grid, Button } from "semantic-ui-react";
 import web3 from "../../ethereum/web3";
+import ContributeForm from "../../components/ContributeForm";
+import { Link } from "../../routes";
 
 class CrowdfundShow extends Component {
   static async getInitialProps(props) {
@@ -10,6 +12,7 @@ class CrowdfundShow extends Component {
 
     const summary = await crowdfund.methods.getSummary().call();
     return {
+      address: props.query.address,
       minimumContribution: summary[0],
       balance: summary[1],
       requestsCount: summary[2],
@@ -54,7 +57,7 @@ class CrowdfundShow extends Component {
           "Number of people who have already donated to this crowdfund"
       },
       {
-        header: balance,
+        header: web3.utils.fromWei(balance, "ether"),
         meta: "Crowdfund Balance (ether)",
         description:
           "The balance is how much money this crowdfund has left to spend"
@@ -68,7 +71,19 @@ class CrowdfundShow extends Component {
     return (
       <Layout>
         <h3>Crowdfund Show</h3>
-        {this.renderCards()}
+        <Grid>
+          <Grid.Column width={10}>
+            {this.renderCards()}
+            <Link route={`crowdfunds/${this.props.address}/requests`}>
+              <a>
+                <Button primary>View Requests</Button>
+              </a>
+            </Link>
+          </Grid.Column>
+          <Grid.Column width={6}>
+            <ContributeForm address={this.props.address} />
+          </Grid.Column>
+        </Grid>
       </Layout>
     );
   }
