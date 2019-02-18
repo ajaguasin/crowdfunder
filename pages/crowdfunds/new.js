@@ -18,7 +18,7 @@ class CrowdfundNew extends Component {
     try {
       const accounts = await web3.eth.getAccounts();
       await creator.methods
-        .createCampaign(this.state.minimumContribution)
+        .createCrowdfund(this.state.minimumContribution)
         .send({
           from: accounts[0]
         });
